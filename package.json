@@ -1,0 +1,25 @@
+{
+  "name": "demoecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "configure": "aws configure",
+    "dozip": "@powershell Compress-Archive -Path /home/jawwad-turabi/Documents/WhyConnect_Code/demoecommerce/index.js",
+    "delzip": "@powershell del index.zip",
+    "sendzip": "aws lambda update-function-code --function-name demoEcommerce --zip-file fileb://index.zip",
+    "deploy": "npm run delzip && npm run dozip && npm run sendzip",
+    "doziplinux": "zip -r index *",
+    "deploylinux": "npm run doziplinux && npm run sendzip",
+    "deploywindows": "npm run dozip && npm run sendzip",
+    "downloadzip_comment": "to download alexa code in zip",
+    "downloadzip": "aws lambda get-function --function-name demoEcommerce"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.743.0"
+  }
+}
